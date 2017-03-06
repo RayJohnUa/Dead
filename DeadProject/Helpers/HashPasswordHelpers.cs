@@ -10,16 +10,11 @@ namespace DeadProject.Helpers
 {
     public static class HashPasswordHelpers
     {
-        public static void CreateAccount(string username, string password)
+        public static string GenerateHash(string value)
         {
-            var hashedPassword = Crypto.HashPassword(password);
-        }
-
-        public static bool ValidateCredentials(string username, string password)
-        {
-            var hashedPassword = GetPasswordFromDatabase(username);
-            var doesPasswordMatch = Crypto.VerifyHashedPassword(hashedPassword, password);
-            return doesPasswordMatch;
+            var data = System.Text.Encoding.ASCII.GetBytes(value);
+            data = System.Security.Cryptography.MD5.Create().ComputeHash(data);
+            return Convert.ToBase64String(data);
         }
     }
 }

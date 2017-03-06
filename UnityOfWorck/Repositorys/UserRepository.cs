@@ -49,7 +49,10 @@ namespace UnityOfWorck.Repositorys
             {
                 user = DbSet.FirstOrDefault(u => u.Email == email && u.Password == password);
                 if (user != null)
+                {
+                    user.Token = Guid.NewGuid().ToString();
                     HashUserEntity.Add(user);
+                }
                 return user;
             }
             return user;

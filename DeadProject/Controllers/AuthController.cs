@@ -30,7 +30,7 @@ namespace DeadProject.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            UserEntity user = _userRepository.GetUserbyMailandPassword(model.Email , Crypto.HashPassword(model.Password));
+            UserEntity user = _userRepository.GetUserbyMailandPassword(model.Email , HashPasswordHelpers.GenerateHash(model.Password));
             if (user != null && ModelState.IsValid)
             {
                 FormsAuthentication.SetAuthCookie(user.Token , false);
@@ -49,7 +49,7 @@ namespace DeadProject.Controllers
             bool isEmailExist = _userRepository.IsEmailIsExist(model.Email);
             if (!isEmailExist && ModelState.IsValid)
             {
-                UserEntity user = new UserEntity() {Email = model.Email , FirstName = model.FirstName , LastName = model.LastName , Password = Crypto.HashPassword(model.Password) };
+                UserEntity user = new UserEntity() {Email = model.Email , FirstName = model.FirstName , LastName = model.LastName , Password = HashPasswordHelpers.GenerateHash(model.Password)};
                 _userRepository.Add(user);
             }
             if (isEmailExist)
