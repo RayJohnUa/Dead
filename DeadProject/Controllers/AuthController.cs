@@ -39,7 +39,7 @@ namespace DeadProject.Controllers
             }
             if (ModelState.IsValid)
             {
-                ModelState.AddModelError("User", "Email or Password is incorrect!");
+                ViewBag.status = StatusHelper.StatusView(Status.Error, "Form is not valid, password or email not valid!!!");
             }
             return View();
         }
@@ -55,7 +55,7 @@ namespace DeadProject.Controllers
             }
             if (isEmailExist)
             {
-                ModelState.AddModelError("Email", "This Email is already exist!");
+                ViewBag.status = StatusHelper.StatusView(Status.Error, "Email is use alredy!!!");
             }
             return View();
         }

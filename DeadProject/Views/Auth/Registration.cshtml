@@ -6,12 +6,7 @@
 <h2>Registration</h2>
 
 <form action="/Auth/Registration" method="post">
-    @if (!Html.ViewData.ModelState.IsValid)
-    {
-        <div class="alert alert-danger">
-            @Html.ValidationSummary()
-        </div>
-    }
+    @Html.Raw(@ViewBag.status)
     <div class="form-group">
         <label for="Email">Email address</label>
         <input type="email" class="form-control" name="Email" id="Email" placeholder="Enter email" required>
