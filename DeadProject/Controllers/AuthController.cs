@@ -50,7 +50,7 @@ namespace DeadProject.Controllers
             bool isEmailExist = _userRepository.IsEmailIsExist(model.Email);
             if (!isEmailExist && ModelState.IsValid)
             {
-                UserEntity user = new UserEntity() {Email = model.Email , FirstName = model.FirstName , LastName = model.LastName , Password = HashPasswordHelpers.GenerateHash(model.Password)};
+                UserEntity user = new UserEntity() {Email = model.Email , FirstName = model.FirstName , Roles = DeadEntity.Roles.Admin , LastName = model.LastName , Password = HashPasswordHelpers.GenerateHash(model.Password)};
                 _userRepository.Add(user);
             }
             if (isEmailExist)

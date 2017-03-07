@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeadEntity
 {
+    public enum Roles
+    {
+        Admin = 0,
+        User = 1
+    }
+
     public class UserEntity
     {
         [Key]
@@ -19,11 +20,12 @@ namespace DeadEntity
         [Required]
         public string FirstName { get; set; }
         [Required]
+        public Roles Roles { get; set; }
+        [Required]
         public string LastName { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
         [NotMapped]
         public string Token { get; set; }
     }

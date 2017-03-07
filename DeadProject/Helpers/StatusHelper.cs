@@ -18,13 +18,14 @@ namespace DeadProject.Helpers
             switch (status)
             {
                 case Status.Error:
-                    return "<div class='alert alert-danger '><strong> Danger!</strong>" + content+"</div> ";
+                    return "<div class='alert alert-danger '><strong> Danger!</strong>"+content+"</div> ";
                 case Status.Success:
-                    return "<div class='alert alert-success '><strong> Success!</strong>"+ content+"</div> ";
+                    return "<div class='alert alert-success '><strong> Success!</strong>"+content+"</div> ";
                 case Status.Warning:
-                    return "<div class='alert alert-warning '><strong> Success!</strong>" + content + "</div> ";
+                    return "<div class='alert alert-warning '><strong> Success!</strong>"+content+"</div> ";
             }
             return content;
+
         }
     }
 }

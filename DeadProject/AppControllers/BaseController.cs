@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DeadProject.AppControllers
 {
+    [Authorize]
     public class BaseController : Controller
     {
         public UserEntity CurentUser = CurentUserHelper.GetcurrentUser();
