@@ -1,4 +1,5 @@
 ﻿using DeadEntity;
+using DeadProject.attr;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace DeadProject.AppControllers
 {
-    [Authorize(Roles = "Administrators")]
+    [AuthorizeRoles(Roles = Roles.Admin)]
     public class AdminController : Controller
     {
         

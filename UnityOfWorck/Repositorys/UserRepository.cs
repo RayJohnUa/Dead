@@ -18,6 +18,14 @@ namespace UnityOfWorck.Repositorys
 
         }
 
+        public bool CanUserPass(string token, Roles role)
+        {
+            UserEntity user = GetbyToken(token);
+            if (user.Roles == role)
+                return true;
+            return false;
+        }
+
         public void DeleteUserHash(string token)
         {
             UserEntity user = HashUserEntity.FirstOrDefault(u => u.Token == token);

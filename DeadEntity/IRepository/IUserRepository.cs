@@ -8,6 +8,8 @@ namespace DeadEntity.IRepository
 {
     public interface IUserRepository : IRepository<UserEntity>
     {
+        bool CanUserPass(string token, Roles role);
+
         UserEntity GetUserbyMailandPassword(string email, string password);
         //void Add(UserEntity user);
         UserEntity GetIdByEmail(string Email);
