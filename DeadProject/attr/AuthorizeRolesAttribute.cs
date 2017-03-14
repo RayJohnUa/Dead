@@ -13,10 +13,13 @@ namespace DeadProject.attr
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
     public class AuthorizeRolesAttribute : AuthorizeAttribute
     {
-        private static IUserRepository _reposetory = new UserRepository(new AppDbContext("AppDbContext"));
-        public new Roles Roles;  // new keyword will hide base class Roles Property
+        private static IUserRepository _reposetory = null;
+
+        public new Roles Roles;
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+            if (_reposetory == null)
+                _reposetory = new UserRepository(new AppDbContext("AppDbContext"));
             if (httpContext == null)
                 throw new ArgumentNullException("httpContext");
             IPrincipal user = httpContext.User;

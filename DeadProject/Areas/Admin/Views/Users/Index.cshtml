@@ -1,0 +1,27 @@
+﻿@model IQueryable<DeadEntity.UserEntity>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User</h2>
+<div>
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-2 Admin_User_list">
+            <div class="Admin_Header_User_list" style="background:url('/StaticResorce/Img/user.jpg')">
+                <p>@item.FirstName @item.LastName</p>
+            </div>
+            <div class="Admin_Content_User_list">
+                <p>@item.Roles</p>
+                <p>@item.Email</p>
+            </div>
+            <div class="Admin_Foter_User_list">
+                <a href="/Admin/Users/Details/@item.Id"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="/Admin/Users/Edit/@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="/Admin/Users/Delete/@item.Id"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    }
+</div>
+
+

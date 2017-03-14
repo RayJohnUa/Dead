@@ -18,5 +18,7 @@ namespace DeadEntity.IRepository
         UserEntity GetbyToken(string token);
 
         void DeleteUserHash(string token);
+
+        void Edit(UserEntity user);
     }
 }

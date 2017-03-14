@@ -33,8 +33,21 @@ namespace UnityOfWorck.Repositorys
                 HashUserEntity.Remove(user);
         }
 
-        public UserEntity GetbyToken(string token)
+        public void Edit(UserEntity user)
         {
+            UserEntity olduser = GetById(user.Id);
+            if(olduser != null)
+            {
+                olduser.Email = user.Email;
+                olduser.FirstName = user.FirstName;
+                olduser.LastName = user.LastName;
+                olduser.Password = user.Password;
+            }
+            Commit();
+        }
+
+        public UserEntity GetbyToken(string token)
+        { 
             return HashUserEntity.FirstOrDefault(u => u.Token == token);
         }
 

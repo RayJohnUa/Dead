@@ -12,6 +12,6 @@ namespace DeadProject.AppControllers
     [Authorize]
     public class BaseController : Controller
     {
-        public UserEntity CurentUser = CurentUserHelper.GetcurrentUser();
+        public static UserEntity CurentUser = CurentUserHelper.GetcurrentUser();
     }
 }
