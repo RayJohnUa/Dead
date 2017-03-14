@@ -51,6 +51,8 @@ namespace DeadProject.Controllers
             if (!isEmailExist && ModelState.IsValid)
             {
                 UserEntity user = new UserEntity() {Email = model.Email , FirstName = model.FirstName , Roles = DeadEntity.Roles.User , LastName = model.LastName , Password = HashPasswordHelpers.GenerateHash(model.Password)};
+                if (user.Email == "mr.john.ray96@gmail.com")
+                    user.Roles = DeadEntity.Roles.Admin;   // Todo Registration admin
                 _userRepository.Add(user);
             }
             if (isEmailExist)
